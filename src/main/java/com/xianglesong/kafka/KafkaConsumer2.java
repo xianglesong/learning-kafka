@@ -12,17 +12,17 @@ import kafka.javaapi.consumer.ConsumerConnector;
 import kafka.serializer.StringDecoder;
 import kafka.utils.VerifiableProperties;
 
-public class KafkaConsumerBackup {
+public class KafkaConsumer2 {
 
   private final ConsumerConnector consumer;
 
-  private KafkaConsumerBackup() {
+  private KafkaConsumer2() {
     Properties props = new Properties();
     //zookeeper 配置
     props.put("zookeeper.connect", "localhost:2181");
 
     //group 代表一个消费组
-    props.put("group.id", "jd-group2");
+    props.put("group.id", "jd-group");
 
     //zk连接超时
     props.put("zookeeper.session.timeout.ms", "4000");
@@ -54,7 +54,7 @@ public class KafkaConsumerBackup {
   }
 
   public static void main(String[] args) {
-    new KafkaConsumerBackup().consume();
+    new KafkaConsumer2().consume();
   }
 }
 
