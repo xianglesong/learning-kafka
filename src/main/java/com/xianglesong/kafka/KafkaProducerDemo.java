@@ -6,12 +6,12 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 
-public class KafkaProducer2 {
+public class KafkaProducerDemo {
 
   private final org.apache.kafka.clients.producer.KafkaProducer<String, String> producer;
   public final static String TOPIC = "TEST-TOPIC";
 
-  private KafkaProducer2() {
+  private KafkaProducerDemo() {
     Properties props = new Properties();
     props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
     props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
@@ -58,7 +58,7 @@ public class KafkaProducer2 {
         producer.send(new ProducerRecord<String, String>(TOPIC, data));
       }
 
-      //必须写下面这句,相当于发送
+      // 必须写下面这句,相当于发送
       producer.flush();
 
       messageNo++;
@@ -66,7 +66,7 @@ public class KafkaProducer2 {
   }
 
   public static void main(String[] args) {
-    new KafkaProducer2().produce();
+    new KafkaProducerDemo().produce();
   }
 
 }
